@@ -2,7 +2,7 @@
     Pytech: Updating Documents. pytech_update.py program
     Anthony Nebel
     12 April 2021
-    Program the updates the pytech students collection
+    Program that adds and deletes a record in students
 """
 # https://github.com/AnthonyNebel/csd-310.git
 
