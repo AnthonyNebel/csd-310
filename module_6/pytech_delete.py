@@ -1,7 +1,8 @@
 """ 
-    Pytech: Updating Documents. pytech_update.py program
+    Pytech: Deleting Documents. pytech_update.py program
     Anthony Nebel
     12 April 2021
+    Module 6.3
     Program that adds and deletes a record in students
 """
 # https://github.com/AnthonyNebel/csd-310.git
