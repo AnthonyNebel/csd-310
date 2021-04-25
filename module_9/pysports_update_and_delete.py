@@ -3,7 +3,8 @@
     Anthony Nebel
     24 April 2021
     Module 9.3
-    Program that the queries for an inner join for team_id to get team name
+    Program that inserts a new player, then updates that player, and
+    finally deletes that player. Performs a show play after each operation.
 """
 
 import mysql.connector
