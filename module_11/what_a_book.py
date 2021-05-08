@@ -20,7 +20,7 @@ config = {
 }
 
 def show_menu():
-    print("\n  -- WhatABook Main Menu --")
+    print("\n-- WhatABook Main Menu --")
 
     print("    1. View Books\n    2. View Store Locations\n    3. My Account\n    4. Exit Program")
 
@@ -35,7 +35,7 @@ def show_menu():
 
 def show_books(_cursor):
     # inner join query 
-    _cursor.execute("SELECT book_id, book_name, author, details from book")
+    _cursor.execute("SELECT book_name, book_id, author, details from book")
 
     # get the results from the cursor object 
     books = _cursor.fetchall()
@@ -44,7 +44,7 @@ def show_books(_cursor):
     
     # iterate over the player data set and display the results 
     for book in books:
-        print("  Book Name: {}\n  Author: {}\n  Details: {}\n".format(book[0], book[1], book[2]))
+        print("  Book Name: {}\n Book ID: {}\n  Author: {}\n  Details: {}\n".format(book[0], book[1], book[2]))
 
 def show_locations(_cursor):
     _cursor.execute("SELECT store_id, locale from store")
