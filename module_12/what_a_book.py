@@ -1,8 +1,9 @@
 """ 
     Whatabook: Application
     Anthony Nebel
-    19 April 2021
-    Program that the queries the team and player table from pysports db
+    11 May 2021
+    Module 12
+    Program for running the whatabook application
 """
 
 """ import statements """
