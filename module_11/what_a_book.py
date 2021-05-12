@@ -180,7 +180,7 @@ try:
         
         user_selection = show_menu()
 
-    print("\n\n  Thank you! Good bye")
+    print("\n\n  Thank you! Good bye\n")
 
 except mysql.connector.Error as err:
    
