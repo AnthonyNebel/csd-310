@@ -171,34 +171,21 @@ try:
                         try: 
                             
                             book_id = int(input("\n        Enter the id of the book you want to add: "))
+                            query = ("SELECT book_id, book_name, author, details " 
+                                "FROM book " 
+                                "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(my_user_id))
+                        
+                            cursor.execute(query)
+                            book_check = cursor.fetchall()
+                            add_book_to_wishlist(cursor, my_user_id, book_id)
+                            db.commit()  
+                            print("\n        Book id: {} was added to your wishlist!".format(book_id))
+                            loop = False
 
                         except ValueError:
             
                             print("\n  Invalid option, try again...\n")
                             continue
-
-                        query = ("SELECT book_id, book_name, author, details " 
-                                "FROM book " 
-                                "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(my_user_id))
-                        
-                        cursor.execute(query)
-                        book_check = cursor.fetchall()
-
-                        book_list = []
-
-                        for book_id in book_check:
-
-                            book_list.append(str(book_id))
-
-                        if book_id not in book_list:
-
-                            print("\n  Invalid option, try again...\n")
-                            continue
-
-                        add_book_to_wishlist(cursor, my_user_id, book_id)
-                        db.commit()  
-                        print("\n        Book id: {} was added to your wishlist!".format(book_id))
-                        loop = False
                  
                 if account_option < 0 or account_option > 3:
                     
