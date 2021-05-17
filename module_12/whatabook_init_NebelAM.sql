@@ -4,15 +4,9 @@ Anthony Nebel
 Module 12
 What A Book Init Script
 */
-/*
-NOTE: Use these scripts if you need before running the scripts below
 
--- use this if the whatabook db doesnt exist 
-CREATE DATABASE whatabook;
+DROP DATABASE IF EXISTS whatabook;
 
--- you must use the DB before running any of the below scripts
-USE whatabook;
-*/
 CREATE DATABASE IF NOT EXISTS whatabook;
 
 USE whatabook;
@@ -23,8 +17,8 @@ CREATE USER 'whatabook_user'@'localhost' IDENTIFIED WITH mysql_native_password B
 
 GRANT ALL PRIVILEGES ON whatabook.* TO 'whatabook_user'@'localhost';
 
--- ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
--- ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
+ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
+ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
 
 DROP TABLE IF EXISTS store;
 DROP TABLE IF EXISTS book;
@@ -58,7 +52,6 @@ CREATE TABLE wishlist (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(user_id));
 
 
--- Book records
 INSERT INTO book (book_name, author, details)
 	VALUES ('The Return of the King', 'J.R. Tolkien', 'The third part of the Lord of the Rings');
 
@@ -86,7 +79,7 @@ INSERT INTO book (book_name, author)
 INSERT INTO book (book_name, author)
 	VALUES ('The Catcher and the Rye', 'J.D. Salinger');
 
--- User Records
+
 INSERT INTO user  (first_name, last_name)
 	VALUES ('Thorin', 'Oakenshield');
     
@@ -96,7 +89,7 @@ INSERT INTO user (first_name, last_name)
 INSERT INTO user (first_name, last_name)
 	VALUES ('Frodo', 'Baggins');
 
--- Wishlist Records
+
 INSERT INTO wishlist (user_id, book_id)
 	VALUES ((SELECT user_id FROM user WHERE first_name = 'Thorin'),
     (SELECT book_id FROM book WHERE book_name = 'The Hobbit or There and Back Again'));
@@ -109,7 +102,6 @@ INSERT INTO wishlist (user_id, book_id)
 	VALUES ((SELECT user_id FROM user WHERE first_name = 'Frodo'),
     (SELECT book_id FROM book WHERE book_name = 'The Return of the King'));
     
--- Store Record
 INSERT INTO store (locale) VALUES ('1000 Galvin Rd S, Bellevue, NE, 68005, Mon-Fri: 8am-7pm Sat: 9am-4pm');
     
     
